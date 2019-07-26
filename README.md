@@ -3,7 +3,7 @@
 //  FlickrPhotoSearch
 //
 //  Created by Raja on 26/07/19.
-/*
+
 Except where otherwise noted in the source code (e.g. the files hash.c,
 list.c and the trio files, which are covered by a similar licence but
 with different Copyright notices) all the files are:
@@ -30,4 +30,4 @@ NECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 Except as contained in this notice, the name of Raja Pitchai shall not
 be used in advertising or otherwise to promote the sale, use or other deal-
 ings in this Software without prior written authorization from him.
-*/
+
