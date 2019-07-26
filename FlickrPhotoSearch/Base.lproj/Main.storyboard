@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Flickr | Ubar-->
+        <!--Flickr | Uber-->
         <scene sceneID="AA8-Ol-UBK">
             <objects>
-                <viewController id="txf-wQ-6ou" customClass="FlickrCollectionViewController" customModule="FlickrSearch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="txf-wQ-6ou" customClass="FlickrCollectionViewController" customModule="FlickrPhotoSearch" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aDS-9H-W2b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JXu-MI-IZE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Flickr | Ubar" id="ta1-Zf-758"/>
+                    <navigationItem key="navigationItem" title="Flickr | Uber" id="ta1-Zf-758"/>
                     <connections>
                         <outlet property="collectionView" destination="Zg1-XU-n9t" id="idH-1s-M0U"/>
                     </connections>
