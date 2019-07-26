@@ -49,7 +49,7 @@ class FlickrSearchService: NSObject {
             return responseModel
             
         } catch {
-            print("Data parsing error: \(error.localizedDescription)")
+           // print("Data parsing error: \(error.localizedDescription)")
             return nil
         }
     }

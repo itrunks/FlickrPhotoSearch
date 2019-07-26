@@ -156,7 +156,6 @@
 				35444AC322EACE1C004AE07B /* Models */,
 				35444AC022EACDD5004AE07B /* Constants */,
 				35444ABB22EACD65004AE07B /* ViewModels */,
-				35444ACA22EACEF9004AE07B /* FlickrRequestConfig.swift */,
 				35444AE022EAD0BF004AE07B /* Helper */,
 				35444AD422EACFBE004AE07B /* NetworkManager */,
 				35444ACF22EACF2B004AE07B /* Controllers */,
@@ -226,6 +225,7 @@
 		35444AE022EAD0BF004AE07B /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				35444ACA22EACEF9004AE07B /* FlickrRequestConfig.swift */,
 				35444AE122EAD0DB004AE07B /* FlickrUI.swift */,
 				35444AE322EAD102004AE07B /* Result.swift */,
 				35444AE522EAD112004AE07B /* UICollectionView+Extension.swift */,

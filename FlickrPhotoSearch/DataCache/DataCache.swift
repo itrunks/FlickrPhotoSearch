@@ -1,9 +1,9 @@
 //
 //  DataCache.swift
-//  FlickrSearch
+//  FlickrPhotoSearch
 //
-//  Created by Satyadev on 30/09/18.
-//  Copyright © 2018 Satyadev Chauhan. All rights reserved.
+//  Created by Raja on 26/07/19.
+//  Copyright © 2019 Raja. All rights reserved.
 //
 
 import UIKit

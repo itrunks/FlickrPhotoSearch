@@ -36,7 +36,7 @@ class NetworkManager: NSObject {
                 return completion(.Failure(NetworkResponse.commonError))
             }
             
-            print("Respone: \(stringResponse)")
+           // print("Respone: \(stringResponse)")
             
             return completion(.Success(data))
             
