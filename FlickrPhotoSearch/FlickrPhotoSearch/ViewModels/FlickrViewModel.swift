@@ -35,7 +35,9 @@ ings in this Software without prior written authorization from him.
 import Foundation
 import UIKit
 
-class FlickrViewModel: NSObject {
+class FlickrViewModel: NSObject
+{
+    // Variable declarations
     
     private(set) var photoArray = [FlickrPhoto]()
     private var searchText = ""
@@ -45,20 +47,24 @@ class FlickrViewModel: NSObject {
     var showAlert: ((String) -> Void)?
     var dataUpdated: (() -> Void)?
     
-    //Mark: Reset the data through fetching to get new images based on new search text
     func search(text: String, completion:@escaping () -> Void) {
         searchText = text
         photoArray.removeAll()
         fetchResults(completion: completion)
     }
     
-    //Mark: Get Flickr images based on search text
+    
+    // MARK: Initialize
+    override init()
+    {
+        super.init()
+    }
+    
     private func fetchResults(completion:@escaping () -> Void) {
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
-        FlickrSearchService().request(searchText, pageNo: pageNo) { (result) in
-            
+        FlickrImageSearchHandler.getPhotoList(searchText, pageNo: pageNo) { result in
             FlickrUI.runOnMainThread {
                 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
@@ -84,10 +90,8 @@ class FlickrViewModel: NSObject {
         }
     }
     
-    //Pagnation has been working once scrollview reached 10 cell before of last cell
     func fetchNextPage(completion:@escaping () -> Void) {
         if pageNo < totalPageNo {
-
             pageNo += 1
             fetchResults {
                 completion()
@@ -100,5 +104,5 @@ class FlickrViewModel: NSObject {
             }
         }
     }
+    
 }
-

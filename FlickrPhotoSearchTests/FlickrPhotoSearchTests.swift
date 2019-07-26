@@ -61,7 +61,7 @@ class FlickrPhotoSearchTests: XCTestCase {
         
         let expct = expectation(description: "Returns json response")
         
-        FlickrSearchService().request("dogs", pageNo: 1) { (result) in
+        FlickrImageSearchHandler.getPhotoList("dogs", pageNo: 1) { (result) in
             
             switch result {
             case .Success(let results):
@@ -89,7 +89,7 @@ class FlickrPhotoSearchTests: XCTestCase {
         
         let expct = expectation(description: "Returns all fields to create valid image url")
         
-        FlickrSearchService().request("kittan", pageNo: 1) { (result) in
+        FlickrImageSearchHandler.getPhotoList("kittan", pageNo: 1) { (result) in
             
             switch result {
             case .Success(let results):
@@ -142,7 +142,7 @@ class FlickrPhotoSearchTests: XCTestCase {
         
         let expct = expectation(description: "Returns error message")
         
-        FlickrSearchService().request("", pageNo: 1) { (result) in
+        FlickrImageSearchHandler.getPhotoList("", pageNo: 1) { (result) in
             switch result {
             case .Success( _):
                 XCTFail("No results")

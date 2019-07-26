@@ -39,7 +39,6 @@ class FlickrConstants: NSObject {
     
     static let api_key = "a4f28588b57387edc18282228da39744"
     static let per_page = 60
-    static let searchURL = "https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=\(FlickrConstants.api_key)&format=json&nojsoncallback=1&safe_search=1&per_page=\(FlickrConstants.per_page)&text=%@&page=%ld"
     static let imageURL = "https://farm%d.staticflickr.com/%@/%@_%@_\(FlickrConstants.size.url_s.value).jpg"
     
     enum size: String {
@@ -64,9 +63,20 @@ class FlickrConstants: NSObject {
     static let defaultColumnCount: CGFloat = 3.0
 }
 
-enum ApiCallAnimate
+enum Response
 {
-    case none
-    case start
-    case stop
+    case json
+    case xml
+    case soap
+    
+    var format:String {
+        switch self {
+        case .json:
+            return "json"
+        case .xml:
+            return "xml"
+        case .soap:
+            return "soap"
+        }
+    }
 }

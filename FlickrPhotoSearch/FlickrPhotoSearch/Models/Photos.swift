@@ -35,10 +35,15 @@ ings in this Software without prior written authorization from him.
 import Foundation
 import UIKit
 
-struct Photos: Codable {
-    let page: Int
-    let pages: Int
-    let perpage: Int
-    let photo: [FlickrPhoto]
-    let total: String
+struct FlickrSearchResults: Codable {
+    let photos: Photos
+    let stat: String
 }
+
+// MARK: - Photos
+struct Photos: Codable {
+    let page, pages, perpage: Int
+    let total: String
+    let photo: [FlickrPhoto]
+}
+

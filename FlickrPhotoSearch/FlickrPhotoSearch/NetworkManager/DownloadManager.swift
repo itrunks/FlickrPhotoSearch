@@ -35,39 +35,9 @@ ings in this Software without prior written authorization from him.
 import Foundation
 import UIKit
 
-class NetworkManager: NSObject {
+class DownloadManager: NSObject {
     
-    static let shared = NetworkManager()
-    
-    static let errorMessage = "Something went wrong, Please try again later"
-    static let noInternetConnection = "Please check your Internet connection and try again."
-    
-    func request(_ request: Request, completion: @escaping (Result<Data>) -> Void) {
-        
-        guard (Reachability.currentReachabilityStatus != .notReachable) else {
-            return completion(.Failure(NetworkResponse.networkFailed))
-        }
-        
-        URLSession.shared.dataTask(with: request as URLRequest) { (data, response, error) in
-            
-            guard error == nil else {
-                return completion(.Failure(NetworkResponse.commonError))
-            }
-            
-            guard let data = data else {
-                return completion(.Failure(NetworkResponse.commonError))
-            }
-            
-            guard String(data: data, encoding: String.Encoding.utf8) != nil else {
-                return completion(.Failure(NetworkResponse.commonError))
-            }
-            
-           // print("Respone: \(stringResponse)")
-            
-            return completion(.Success(data))
-            
-            }.resume()
-    }
+    static let shared = DownloadManager()
     
     func downloadImage(_ urlString: String, completion: @escaping (Result<UIImage>) -> Void) {
         

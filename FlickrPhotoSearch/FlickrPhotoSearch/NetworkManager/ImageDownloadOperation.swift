@@ -55,7 +55,7 @@ class ImageDownloadOperation: Operation {
             
             if self.isCancelled { return }
             
-            NetworkManager.shared.downloadImage(url) { (result) in
+            DownloadManager.shared.downloadImage(url) { (result) in
                 
                 FlickrUI.runOnMainThread {
                     switch result {
