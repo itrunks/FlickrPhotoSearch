@@ -1,8 +1,6 @@
 # FlickrPhotoSearch
 
-//  FlickrPhotoSearch
-//
-//  Created by Raja on 26/07/19.
+  Created by Raja on 26/07/19.
 
 Except where otherwise noted in the source code (e.g. the files hash.c,
 list.c and the trio files, which are covered by a similar licence but
