@@ -1,5 +1,5 @@
 //
-//  ImageCollectionViewCell.swift
+//  UICollectionViewCell+Extension.swift
 //  FlickrPhotoSearch
 //
 //  Created by Raja on 26/07/19.
@@ -32,29 +32,38 @@
  ings in this Software without prior written authorization from him.
  */
 
+
 import Foundation
 import UIKit
 
-class ImageCollectionViewCell: UICollectionViewCell {
+extension UIViewController:UIPopoverPresentationControllerDelegate {
     
-    @IBOutlet weak var imageView: UIImageView!
-
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
-    override func prepareForReuse() {
-        imageView.image = nil
-    }
-    
-    var model: ImageModel? {
-        didSet {
-            if let model = model {
-                imageView.image = UIImage(named: "placeholder")
-                imageView.downloadImage(model.imageURL)
+    func showAlertPop(withTitle title: String?, message: String?,delay:Double? = nil,completion: (() -> Void)? = nil)
+    {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "OK", style: .cancel) { (isAction) in
+            
+            guard let completion = completion else { return }
+            
+            completion()
+        }
+        
+        alert.addAction(action)
+        
+        if let del = delay {
+            
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + del)
+            {
+                self.present(alert, animated: true, completion: nil)
             }
         }
+        else
+        {
+            self.present(alert, animated: true, completion: nil)
+        }
+        
     }
+
 }

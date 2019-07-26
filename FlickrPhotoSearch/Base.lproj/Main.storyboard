@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Images-->
+        <!--Flickr | Ubar-->
         <scene sceneID="AA8-Ol-UBK">
             <objects>
                 <viewController id="txf-wQ-6ou" customClass="FlickrCollectionViewController" customModule="FlickrSearch" customModuleProvider="target" sceneMemberID="viewController">
@@ -28,7 +28,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="lOz-8C-y43">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="lOz-8C-y43">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -48,7 +48,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="JXu-MI-IZE"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Images" id="ta1-Zf-758"/>
+                    <navigationItem key="navigationItem" title="Flickr | Ubar" id="ta1-Zf-758"/>
                     <connections>
                         <outlet property="collectionView" destination="Zg1-XU-n9t" id="idH-1s-M0U"/>
                     </connections>

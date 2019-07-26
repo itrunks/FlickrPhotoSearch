@@ -3,8 +3,34 @@
 //  FlickrPhotoSearch
 //
 //  Created by Raja on 26/07/19.
-//  Copyright © 2019 Raja. All rights reserved.
-//
+/*
+Except where otherwise noted in the source code (e.g. the files hash.c,
+list.c and the trio files, which are covered by a similar licence but
+with different Copyright notices) all the files are:
+
+Copyright (C) 2019 Raja Pitchai.  All Rights Reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is fur-
+nished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FIT-
+NESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.  IN NO EVENT SHALL THE
+RAJA PITCHAI BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CON-
+NECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+Except as contained in this notice, the name of Raja Pitchai shall not
+be used in advertising or otherwise to promote the sale, use or other deal-
+ings in this Software without prior written authorization from him.
+*/
 
 import Foundation
 import UIKit
@@ -17,6 +43,8 @@ class FlickrCollectionViewController: UIViewController {
     private var numberOfColumns: CGFloat = FlickrConstants.defaultColumnCount
     private var viewModel = FlickrViewModel()
     private var isFirstTimeActive = true
+    private var footerView:CustomFooterView?
+    private var isLoading:Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,11 +68,7 @@ class FlickrCollectionViewController: UIViewController {
     }
     
     private func showAlert(title: String = "Flickr", message: String?) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title:NSLocalizedString("OK", comment: ""), style: UIAlertAction.Style.default) {(action) in
-        }
-        alertController.addAction(okAction)
-        present(alertController, animated: true, completion: nil)
+             self.showAlertPop(withTitle: title, message: message)
     }
 }
 
@@ -60,7 +84,9 @@ extension FlickrCollectionViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(nib: ImageCollectionViewCell.nibName)
+        collectionView.register(nibName: ImageCollectionViewCell.self)
+        collectionView.registerSupplementaryView(nibName: CustomFooterView.self)
+    
     }
 }
 
@@ -76,6 +102,7 @@ extension FlickrCollectionViewController {
         
         viewModel.dataUpdated = { [weak self] in
             print("data source updated")
+            self?.isLoading = false
             self?.collectionView.reloadData()
         }
     }
@@ -85,6 +112,7 @@ extension FlickrCollectionViewController {
             print("next page fetched")
         }
     }
+    
 }
 
 extension FlickrCollectionViewController: UISearchControllerDelegate, UISearchBarDelegate {
@@ -102,9 +130,10 @@ extension FlickrCollectionViewController: UISearchControllerDelegate, UISearchBa
         guard let text = searchBar.text, text.count > 1 else {
             return
         }
-        
+        self.isLoading = true
+        self.footerView?.startAnimate()
         collectionView.reloadData()
-        
+       
         viewModel.search(text: text) {
             print("search completed.")
         }
@@ -140,6 +169,27 @@ extension FlickrCollectionViewController: UICollectionViewDataSource {
             loadNextPage()
         }
     }
+    
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if isLoading {
+            return CGSize.zero
+        }
+        return CGSize(width: collectionView.bounds.size.width, height: 50)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        if kind == UICollectionView.elementKindSectionFooter {
+            let aFooterView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CustomFooterView.reuseIdentifier, for: indexPath) as! CustomFooterView
+            self.footerView = aFooterView
+            self.footerView?.backgroundColor = UIColor.clear
+            return aFooterView
+        } else {
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: CustomFooterView.reuseIdentifier, for: indexPath)
+            return headerView
+        }
+    }
+    
 }
 
 //MARK:- UICollectionViewDelegateFlowLayout
@@ -153,3 +203,4 @@ extension FlickrCollectionViewController: UICollectionViewDelegateFlowLayout {
         return 0
     }
 }
+

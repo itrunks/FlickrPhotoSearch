@@ -35,6 +35,10 @@
 		35444AEB22EAD55E004AE07B /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444AEA22EAD55E004AE07B /* UIImageView+Extension.swift */; };
 		35444AED22EAD622004AE07B /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444AEC22EAD622004AE07B /* NetworkResponse.swift */; };
 		35444AEF22EAE428004AE07B /* FlickrSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444AEE22EAE428004AE07B /* FlickrSearchTests.swift */; };
+		35444AF222EAEA90004AE07B /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444AF022EAEA90004AE07B /* UIViewController+Extension.swift */; };
+		35444AF522EAF410004AE07B /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444AF422EAF410004AE07B /* UIView+Extension.swift */; };
+		35444AF822EAF85A004AE07B /* CustomFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35444AF622EAF859004AE07B /* CustomFooterView.swift */; };
+		35444AF922EAF85A004AE07B /* CustomFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35444AF722EAF85A004AE07B /* CustomFooterView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +84,10 @@
 		35444AEA22EAD55E004AE07B /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
 		35444AEC22EAD622004AE07B /* NetworkResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		35444AEE22EAE428004AE07B /* FlickrSearchTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearchTests.swift; sourceTree = "<group>"; };
+		35444AF022EAEA90004AE07B /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		35444AF422EAF410004AE07B /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		35444AF622EAF859004AE07B /* CustomFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomFooterView.swift; sourceTree = "<group>"; };
+		35444AF722EAF85A004AE07B /* CustomFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomFooterView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -194,6 +202,7 @@
 		35444ACC22EACF13004AE07B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				35444AF722EAF85A004AE07B /* CustomFooterView.xib */,
 				35444ACD22EACF21004AE07B /* ImageCollectionViewCell.xib */,
 			);
 			path = Views;
@@ -204,6 +213,7 @@
 			children = (
 				35444AD022EACF5D004AE07B /* FlickrCollectionViewController.swift */,
 				35444AD222EACF96004AE07B /* ImageCollectionViewCell.swift */,
+				35444AF622EAF859004AE07B /* CustomFooterView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -230,6 +240,8 @@
 				35444AE322EAD102004AE07B /* Result.swift */,
 				35444AE522EAD112004AE07B /* UICollectionView+Extension.swift */,
 				35444AEA22EAD55E004AE07B /* UIImageView+Extension.swift */,
+				35444AF022EAEA90004AE07B /* UIViewController+Extension.swift */,
+				35444AF422EAF410004AE07B /* UIView+Extension.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -326,6 +338,7 @@
 				35444AA222EAC93E004AE07B /* LaunchScreen.storyboard in Resources */,
 				35444A9F22EAC93E004AE07B /* Assets.xcassets in Resources */,
 				35444ACE22EACF21004AE07B /* ImageCollectionViewCell.xib in Resources */,
+				35444AF922EAF85A004AE07B /* CustomFooterView.xib in Resources */,
 				35444A9D22EAC93B004AE07B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35444AF522EAF410004AE07B /* UIView+Extension.swift in Sources */,
 				35444AD122EACF5D004AE07B /* FlickrCollectionViewController.swift in Sources */,
 				35444ACB22EACEF9004AE07B /* FlickrRequestConfig.swift in Sources */,
 				35444AE822EAD1A5004AE07B /* FlickrSearchService.swift in Sources */,
@@ -351,6 +365,7 @@
 				35444AD622EACFEE004AE07B /* NetworkManager.swift in Sources */,
 				35444A9822EAC93B004AE07B /* AppDelegate.swift in Sources */,
 				35444AB922EACD39004AE07B /* DataCache.swift in Sources */,
+				35444AF222EAEA90004AE07B /* UIViewController+Extension.swift in Sources */,
 				35444AE222EAD0DB004AE07B /* FlickrUI.swift in Sources */,
 				35444ABD22EACD7D004AE07B /* ImageModel.swift in Sources */,
 				35444AEB22EAD55E004AE07B /* UIImageView+Extension.swift in Sources */,
@@ -361,6 +376,7 @@
 				35444AC222EACDF1004AE07B /* FlickrConstants.swift in Sources */,
 				35444ABF22EACD9A004AE07B /* FlickrViewModel.swift in Sources */,
 				35444AE622EAD112004AE07B /* UICollectionView+Extension.swift in Sources */,
+				35444AF822EAF85A004AE07B /* CustomFooterView.swift in Sources */,
 				35444AC522EACE2E004AE07B /* Photos.swift in Sources */,
 				35444AC722EACE47004AE07B /* FlickrSearchResults.swift in Sources */,
 				35444AED22EAD622004AE07B /* NetworkResponse.swift in Sources */,

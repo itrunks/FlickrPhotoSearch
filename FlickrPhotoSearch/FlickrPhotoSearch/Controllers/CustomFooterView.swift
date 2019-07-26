@@ -1,6 +1,6 @@
 //
-//  FlickrSearchTests.swift
-//  FlickrPhotoSearchTests
+//  CustomFooterView.swift
+//  FlickrPhotoSearch
 //
 //  Created by Raja on 26/07/19.
 /*
@@ -31,31 +31,59 @@ Except as contained in this notice, the name of Raja Pitchai shall not
 be used in advertising or otherwise to promote the sale, use or other deal-
 ings in this Software without prior written authorization from him.
 */
-import XCTest
-@testable import FlickrPhotoSearch
 
-class FlickrSearchTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+
+import Foundation
+import UIKit
+
+class CustomFooterView : UICollectionReusableView {
+   
+    @IBOutlet weak var refreshControlIndicator: UIActivityIndicatorView!
+    var isAnimatingFinal:Bool = false
+    var currentTransform:CGAffineTransform?
+
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        //self.prepareInitialAnimation()
     }
     
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
+    override func layoutSubviews() {
+        super.layoutSubviews()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func setTransform(inTransform:CGAffineTransform, scaleFactor:CGFloat) {
+        if isAnimatingFinal {
+            return
+        }
+        self.currentTransform = inTransform
+        self.refreshControlIndicator?.transform = CGAffineTransform.init(scaleX: scaleFactor, y: scaleFactor)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    //reset the animation
+    func prepareInitialAnimation() {
+        self.isAnimatingFinal = false
+        self.refreshControlIndicator?.stopAnimating()
+        self.refreshControlIndicator?.transform = CGAffineTransform.init(scaleX: 0.0, y: 0.0)
+    }
+    
+    func startAnimate() {
+        self.isAnimatingFinal = true
+        self.refreshControlIndicator?.startAnimating()
+    }
+    
+    func stopAnimate() {
+        self.isAnimatingFinal = false
+        self.refreshControlIndicator?.stopAnimating()
+    }
+    
+    //final animation to display loading
+    func animateFinal() {
+        if isAnimatingFinal {
+            return
+        }
+        self.isAnimatingFinal = true
+        UIView.animate(withDuration: 0.2) { 
+            self.refreshControlIndicator?.transform = CGAffineTransform.identity
         }
     }
-    
 }

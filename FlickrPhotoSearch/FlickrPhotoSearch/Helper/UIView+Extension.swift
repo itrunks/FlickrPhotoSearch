@@ -1,6 +1,6 @@
 //
-//  FlickrSearchTests.swift
-//  FlickrPhotoSearchTests
+//  UIViewController+Extension.swift
+//  FlickrPhotoSearch
 //
 //  Created by Raja on 26/07/19.
 /*
@@ -31,31 +31,59 @@ Except as contained in this notice, the name of Raja Pitchai shall not
 be used in advertising or otherwise to promote the sale, use or other deal-
 ings in this Software without prior written authorization from him.
 */
-import XCTest
-@testable import FlickrPhotoSearch
 
-class FlickrSearchTests: XCTestCase {
+import Foundation
+import UIKit
+
+extension UIView {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func showLoadingHUD()
+    {
+        DispatchQueue.main.async
+            {
+    guard (self.viewWithTag(-23232323) as? UIActivityIndicatorView) != nil else {
+                    
+                        
+                    let  nvActivityLoader = UIActivityIndicatorView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: UIScreen.main.bounds.size.width, height: 80)))
+ 
+  
+                    nvActivityLoader.center =  self.center
+                    
+                    
+                    nvActivityLoader.color = .black
+                    
+                    nvActivityLoader.tag = -23232323
+                    
+                    self.addSubview(nvActivityLoader)
+                    
+                    nvActivityLoader.startAnimating()
+                    
+                    return
+                }
+                
         }
     }
     
+    func hideLoadingHUD()
+    {
+        DispatchQueue.main.async
+            {
+                guard let nvActivityView = self.viewWithTag(-23232323) as? UIActivityIndicatorView
+                    else
+                {
+                    return
+                }
+                
+                nvActivityView.stopAnimating()
+                
+                nvActivityView.removeFromSuperview()
+        }
+    }
+    
+   static var reuseIdentifier: String {
+        return String(describing: self)
+    }
+    static var nibName: String {
+        return String(describing: self)
+    }
 }
